@@ -213,16 +213,43 @@ var MainnetParams = Params{
 	K:           defaultGHOSTDAGK,
 	Name:        "zua-mainnet",
 	Net:         appmessage.Mainnet,
-	RPCPort:     "16111",
-	DefaultPort: "16110",
+	RPCPort:     "46110",
+	DefaultPort: "46111",
 	DNSSeeds: []string{
-		
+		"176.117.76.41",
 		"ixbase.info",
 		"maxzua.info",
 		"zuabaniov.com",
-		"176.104.53.246",
 		},
-	
+	AdditionalNodes: []string{
+		"176.104.53.246:46111",
+		"84.32.84.32:46111",
+		"103.153.72.232:46111",
+		"94.198.55.192:46111",
+		"103.150.92.155:46111",
+		"62.90.142.93:46111",
+		"176.104.53.246:46111",
+		"71.251.60.16:46111",
+		"185.218.126.127:46111",
+		"95.144.209.155:46111",
+		"172.168.0.13:46111",
+		"68.8.117.160:46111",
+		"185.218.126:46111",
+		"78.24.220.85:46111",
+		"142.132.156.41:46111",
+		"172.168.0.19:46111",
+		"172.168.0.12:46111",
+		"144.91.100.26:46111",
+		"86.31.224.9:46111",
+		"51.195.62.151:46111",
+		"172.100.100.24:46111",
+		"141.95.124.99:46111",
+		"62.72.46.140:46111",
+		"45.32.82.142:46111",
+		"174.82.173.16:46111",
+		"7.7.7.100:46111",
+		"176.104.53.246:46111",
+	},
 
 	// DAG parameters
 	GenesisBlock:                    &genesisBlock,
@@ -285,8 +312,8 @@ var TestnetParams = Params{
 	K:           defaultGHOSTDAGK,
 	Name:        "zua-testnet-10",
 	Net:         appmessage.Testnet,
-	RPCPort:     "96210",
-	DefaultPort: "96211",
+	RPCPort:     "46119",
+	DefaultPort: "46120",
 	DNSSeeds: []string{
 		//"ixbase.info",
 		
@@ -357,8 +384,8 @@ var SimnetParams = Params{
 	K:           defaultGHOSTDAGK,
 	Name:        "zua-simnet",
 	Net:         appmessage.Simnet,
-	RPCPort:     "96510",
-	DefaultPort: "96511",
+	RPCPort:     "46115",
+	DefaultPort: "46116",
 	DNSSeeds:    []string{}, // NOTE: There must NOT be any seeds.
 
 	// DAG parameters
@@ -417,8 +444,8 @@ var DevnetParams = Params{
 	K:           defaultGHOSTDAGK,
 	Name:        "zua-devnet",
 	Net:         appmessage.Devnet,
-	RPCPort:     "96610",
-	DefaultPort: "96611",
+	RPCPort:     "46113",
+	DefaultPort: "46113",
 	DNSSeeds:    []string{}, // NOTE: There must NOT be any seeds.
 
 	// DAG parameters
