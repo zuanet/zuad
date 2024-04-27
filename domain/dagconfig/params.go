@@ -213,8 +213,8 @@ var MainnetParams = Params{
 	K:           defaultGHOSTDAGK,
 	Name:        "zua-mainnet",
 	Net:         appmessage.Mainnet,
-	RPCPort:     "96110",
-	DefaultPort: "96111",
+	RPCPort:     "16111",
+	DefaultPort: "16110",
 	DNSSeeds: []string{
 		
 		"ixbase.info",
