@@ -213,8 +213,8 @@ var MainnetParams = Params{
 	K:           defaultGHOSTDAGK,
 	Name:        "zua-mainnet",
 	Net:         appmessage.Mainnet,
-	RPCPort:     "46110",
-	DefaultPort: "46111",
+	RPCPort:     "96110",
+	DefaultPort: "96111",
 	DNSSeeds: []string{
 		
 		"ixbase.info",
@@ -285,8 +285,8 @@ var TestnetParams = Params{
 	K:           defaultGHOSTDAGK,
 	Name:        "zua-testnet-10",
 	Net:         appmessage.Testnet,
-	RPCPort:     "46210",
-	DefaultPort: "46211",
+	RPCPort:     "96210",
+	DefaultPort: "96211",
 	DNSSeeds: []string{
 		//"ixbase.info",
 		
@@ -357,8 +357,8 @@ var SimnetParams = Params{
 	K:           defaultGHOSTDAGK,
 	Name:        "zua-simnet",
 	Net:         appmessage.Simnet,
-	RPCPort:     "46510",
-	DefaultPort: "46511",
+	RPCPort:     "96510",
+	DefaultPort: "96511",
 	DNSSeeds:    []string{}, // NOTE: There must NOT be any seeds.
 
 	// DAG parameters
@@ -417,8 +417,8 @@ var DevnetParams = Params{
 	K:           defaultGHOSTDAGK,
 	Name:        "zua-devnet",
 	Net:         appmessage.Devnet,
-	RPCPort:     "46610",
-	DefaultPort: "46611",
+	RPCPort:     "96610",
+	DefaultPort: "96611",
 	DNSSeeds:    []string{}, // NOTE: There must NOT be any seeds.
 
 	// DAG parameters
