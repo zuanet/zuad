@@ -11,7 +11,7 @@ func initTestBlockInfoStructsForClone() []*BlockInfo {
 	tests := []*BlockInfo{
 		{
 			true,
-			BlockStatus(0x01),
+			BlockStatus(0x00),
 			0,
 			big.NewInt(0),
 			nil,
@@ -19,7 +19,7 @@ func initTestBlockInfoStructsForClone() []*BlockInfo {
 			[]*DomainHash{},
 		}, {
 			true,
-			BlockStatus(0x02),
+			BlockStatus(0x00),
 			0,
 			big.NewInt(0),
 			nil,
@@ -51,7 +51,7 @@ func initTestBlockInfoStructsForClone() []*BlockInfo {
 			[]*DomainHash{},
 		}, {
 			true,
-			BlockStatus(0x01),
+			BlockStatus(0x00),
 			0,
 			big.NewInt(1),
 			nil,
