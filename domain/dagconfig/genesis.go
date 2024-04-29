@@ -13,7 +13,7 @@ import (
 )
 
 var genesisTxOuts = []*externalapi.DomainTransactionOutput{}
-var genesisTxPayload = []bytes{
+var genesisTxPayload = []byte{
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, // Blue score
     0x01, 0x87, 0x65, 0x54, 0x30, 0x00, 0x00, 0x00, // 19B (block size)
     0x00, 0x00, // Script version
@@ -66,7 +66,7 @@ var genesisBlock = externalapi.DomainBlock{
 		big.NewInt(0),
 		&externalapi.DomainHash{},
 	),
-	Transactions: []*externalapi.DomainTon{genesisCoinbaseTx},
+	Transactions: []*externalapi.DomainTransaction{genesisCoinbaseTx},
 }
 
 var devnetGenesisTxOuts = []*externalapi.DomainTransactionOutput{}
