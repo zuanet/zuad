@@ -13,9 +13,6 @@ import (
 )
 
 var genesisTxOuts = []*externalapi.DomainTransactionOutput{}
-
-import hashlib
-
 # Define the genesisTxPayload byte array
 genesis_tx_payload = bytes([
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, # Blue score
