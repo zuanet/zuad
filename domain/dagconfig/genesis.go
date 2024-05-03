@@ -65,11 +65,8 @@ var genesisBlock = externalapi.DomainBlock{
         big.NewInt(0),
         // Replace this with your own previous block hash
         &externalapi.DomainHash{}, // This should be the hash of the previous block
-    ),
-    // Replace this with your own list of transactions for the genesis block
-    Transactions: []*externalapi.DomainTransaction{genesisCoinbaseTx},
-    ),
-	Transactions: []*externalapi.DomainTransaction{devnetGenesisCoinbaseTx},
+        ),
+       Transactions: []*externalapi.DomainTransaction{devnetGenesisCoinbaseTx},
 }
 
 var devnetGenesisTxOuts = []*externalapi.DomainTransactionOutput{}
