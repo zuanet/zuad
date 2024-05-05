@@ -26,7 +26,7 @@ var genesisTxPayload = []byte{
    0x38, 0x6f, 0x19, 0x80, 0xac, 0x2e, 0xfb, 0xb3, 0xd2, 0xdf,
    0xa7, 0xdf, 0xd7, 0x6f, 0xf5, 0x6f, 0x24, 0xda, 0x83, 0xc3, 
    0xb7, 0x4b, 0x9e, 0xb2, 0xd7, 0x28, 0xfa, 0x19, 0x4d, 0x03, 0xa6, 0xa0, 
-})
+}
 
 // genesisCoinbaseTx is the coinbase transaction for the genesis blocks for
 // the main network.
@@ -121,7 +121,7 @@ var devnetGenesisBlock = externalapi.DomainBlock{
 		&externalapi.DomainHash{},
 	),
 	Transactions: []*externalapi.DomainTransaction{devnetGenesisCoinbaseTx},
-})
+}
 
 var simnetGenesisTxOuts = []*externalapi.DomainTransactionOutput{}
 
@@ -132,7 +132,7 @@ var simnetGenesisTxPayload = []byte{
 	0x01,                                                                   // Varint
 	0x00,                                                                   // OP-FALSE
 	0x6b, 0x61, 0x73, 0x70, 0x61, 0x2d, 0x73, 0x69, 0x6d, 0x6e, 0x65, 0x74, // zua-simnet
-})
+}
 
 // simnetGenesisCoinbaseTx is the coinbase transaction for the simnet genesis block.
 var simnetGenesisCoinbaseTx = transactionhelper.NewSubnetworkTransaction(0,
@@ -146,7 +146,7 @@ var simnetGenesisHash = externalapi.NewDomainHashFromByteArray(&[externalapi.Dom
 	0xa3, 0x9e, 0x78, 0x57, 0x39, 0x27, 0xda, 0x24,
 	0xd2, 0x39, 0x95, 0x70, 0x5b, 0x57, 0x9f, 0x30,
 	0x95, 0x9b, 0x91, 0x27, 0xe9, 0x6b, 0x79, 0xe3,
-})
+}
 
 // simnetGenesisMerkleRoot is the hash of the first transaction in the genesis block
 // for the devopment network.
@@ -175,7 +175,7 @@ var simnetGenesisBlock = externalapi.DomainBlock{
 		&externalapi.DomainHash{},
 	),
 	Transactions: []*externalapi.DomainTransaction{simnetGenesisCoinbaseTx},
-})
+}
 
 var testnetGenesisTxOuts = []*externalapi.DomainTransactionOutput{}
 
@@ -186,7 +186,7 @@ var testnetGenesisTxPayload = []byte{
 	0x01,                                                                         // Varint
 	0x00,                                                                         // OP-FALSE
 	0x6b, 0x61, 0x73, 0x70, 0x61, 0x2d, 0x74, 0x65, 0x73, 0x74, 0x6e, 0x65, 0x74, // zua-testnet
-})
+}
 
 // testnetGenesisCoinbaseTx is the coinbase transaction for the testnet genesis block.
 var testnetGenesisCoinbaseTx = transactionhelper.NewSubnetworkTransaction(0,
@@ -229,4 +229,4 @@ var testnetGenesisBlock = externalapi.DomainBlock{
 		&externalapi.DomainHash{},
 	),
 	Transactions: []*externalapi.DomainTransaction{testnetGenesisCoinbaseTx},
-})
+}
