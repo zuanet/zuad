@@ -50,19 +50,20 @@ var genesisBlock = externalapi.DomainBlock{
 	Header: blockheader.NewImmutableBlockHeader(
 		0,
 		[]externalapi.BlockLevelParents{},
-		genesisMerkleRoot,
+		[]byte{0xee, 0xc2, 0x6d, 0xdd, 0x9a, 0x40, 0x84, 0x49, 0xf8, 0xe0, 0x6c, 0x62, 0x2c, 0x11, 0xd6, 0x1b, 0x94, 0x34, 0x1b, 0x04, 0xfa, 0xe5, 0xea, 0xc8, 0xd7, 0x55, 0xc4, 0x77, 0xb8, 0x29, 0x46, 0x24},
 		&externalapi.DomainHash{},
 		externalapi.NewDomainHashFromByteArray(muhash.EmptyMuHashHash.AsArray()),
-			0x14d2bd72185,
-        	525264379,
-        	0x1a14e,
-        	0, // Checkpoint DAA score
-        	0,
+		0x14d2bd72185,
+		525264379,
+		0x1a14e,
+		0, // Checkpoint DAA score
+		0,
 		big.NewInt(0),
 		&externalapi.DomainHash{},
 	),
 	Transactions: []*externalapi.DomainTransaction{genesisCoinbaseTx},
 }
+
 
 var devnetGenesisTxOuts = []*externalapi.DomainTransactionOutput{}
 
