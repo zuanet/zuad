@@ -167,7 +167,7 @@ const (
 
 // ProtocolMessageCommandToString maps all MessageCommands to their string representation
 var ProtocolMessageCommandToString = map[MessageCommand]string{
-	CmdVersion:                             "Version",
+	CmdVersion:                             "NewVersion",
 	CmdVerAck:                              "VerAck",
 	CmdRequestAddresses:                    "RequestAddresses",
 	CmdAddresses:                           "Addresses",
