@@ -68,7 +68,7 @@ var devnetGenesisTxPayload = []byte{
 	0x76, 0xA9, 0x14, 0x9A, 0x4F, 0x4F, 0x50, 0xA1,
         0x17, 0x59, 0x5F, 0x7D, 0x95, 0x85, 0xE6, 0x05,
 	0xEB, 0xD4, 0x80, 0xB6, 0xC2, 0x0D, 0x4A, 0x4C,
-	0x5D, 0x5A, 0xB6, 0x65, 0xA7, 0x8B, 0x5F, 0xAC
+	0x5D, 0x5A, 0xB6, 0x65, 0xA7, 0x8B, 0x5F, 0xAC,
 }
 
 // devnetGenesisCoinbaseTx is the coinbase transaction for the genesis blocks for
@@ -98,13 +98,14 @@ var devnetGenesisMerkleRoot = externalapi.NewDomainHashFromByteArray(&[externala
 // devnetGenesisBlock defines the genesis block of the block DAG which serves as the
 // public transaction ledger for the development network.
 var devnetGenesisBlock = externalapi.DomainBlock{
-	Header: blockheader.NewImmutableBlockHeader({
+	Header: blockheader.NewImmutableBlockHeader(
 		Version:    1,
-		PrevBlock:  chainhash.Hash{}, // Update this if necessary
-		MerkleRoot: *GetDevnetGenesisMerkleRoot(),
-		Timestamp:  1231006505, // Update this with the correct timestamp
-		Bits:       0x1d00ffff, // Update this with the correct bits
-		Nonce:      2083236893, // Update this with the correct nonce
+		[]externalapi.BlockLevelParents{},
+		devnetGenesisMerkleRoot,
+		&externalapi.DomainHash{},
+		1231006505, 
+		0x1d00ffff, 
+		2083236893, 
 		0,
 		0,
 		big.NewInt(0),
@@ -169,7 +170,7 @@ var testnetGenesisHash = externalapi.NewDomainHashFromByteArray(&[externalapi.Do
 	0xf8, 0x96, 0xa3, 0x03, 0x48, 0x73, 0xbe, 0x17,
 	0x39, 0xfc, 0x43, 0x59, 0x23, 0x68, 0x99, 0xfd,
 	0x3d, 0x65, 0xd2, 0xbc, 0x94, 0xf9, 0x78, 0x0d,
-	0xf0, 0xd0, 0xda, 0x3e, 0xb1, 0xcc, 0x43, 0x71
+	0xf0, 0xd0, 0xda, 0x3e, 0xb1, 0xcc, 0x43, 0x71,
 })
 
 // testnetGenesisMerkleRoot is the hash of the first transaction in the genesis block
@@ -178,7 +179,7 @@ var testnetGenesisMerkleRoot = externalapi.NewDomainHashFromByteArray(&[external
 	0x17, 0x34, 0x14, 0x08, 0xa5, 0x72, 0x45, 0x56,
 	0x50, 0x4d, 0xf4, 0xd6, 0xcf, 0x51, 0x5c, 0xbf,
 	0xbb, 0x22, 0x04, 0x30, 0xdc, 0x45, 0x1c, 0x74,
-	0x3c, 0x22, 0xd5, 0xe9, 0x11, 0x72, 0x0c, 0x2b
+	0x3c, 0x22, 0xd5, 0xe9, 0x11, 0x72, 0x0c, 0x2b,
 })
 
 // testnetGenesisBlock defines the genesis block of the block DAG which serves as the
@@ -190,7 +191,7 @@ var testnetGenesisBlock = externalapi.DomainBlock{
 		testnetGenesisMerkleRoot,
 		&externalapi.DomainHash{},
 		externalapi.NewDomainHashFromByteArray(muhash.EmptyMuHashHash.AsArray()),
-		0x671b3210, // Updated timestamp for "01/05/2024"
+		0x671b3210, 
 		0x1e7fffff,
 		0x14582,
 		0,
@@ -210,7 +211,7 @@ var devnetGenesisBlock = externalapi.DomainBlock{
 		devnetGenesisMerkleRoot,
 		&externalapi.DomainHash{},
 		externalapi.NewDomainHashFromByteArray(muhash.EmptyMuHashHash.AsArray()),
-		1714543200000, // Updated timestamp for May 6, 2024
+		1714543200000, 
 		45552,
 		0x41d00ff,
 		1312860,
