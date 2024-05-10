@@ -26,16 +26,12 @@ var genesisTxPayload = []byte{
     0x67, 0x65, 0x6e, 0x65, 0x73, 0x69, 0x73, 0x5f, 0x68, 0x61, 0x73, 0x68, //GENESISHASH byte slice: 
 }
 
-// genesisCoinbaseTx is the coinbase transaction for the genesis blocks for
-// the main network.
 var genesisCoinbaseTx = transactionhelper.NewSubnetworkTransaction(0, []*externalapi.DomainTransactionInput{}, genesisTxOuts,
 	&subnetworks.SubnetworkIDCoinbase, 0, genesisTxPayload)
 
-// genesisHash is the hash of the first block in the block DAG for the main
-// network (genesis block).
 var genesisHash = externalapi.NewDomainHashFromByteArray(&[externalapi.DomainHashSize]byte{
 	0x67, 0x65, 0x6e, 0x65, 0x73, 0x69, 0x73, 0x5f, 0x68, 0x61, 0x73, 0x68,
-
+})
 
 // genesisMerkleRoot is the hash of the first transaction in the genesis block
 // for the main network.
