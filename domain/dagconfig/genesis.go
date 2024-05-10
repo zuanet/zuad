@@ -35,8 +35,6 @@ var genesisHash = externalapi.NewDomainHashFromByteArray(&[externalapi.DomainHas
     0x30, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30,
 })
 
-})
-
 // genesisMerkleRoot is the hash of the first transaction in the genesis block
 // for the main network.
 var genesisMerkleRoot = externalapi.NewDomainHashFromByteArray(&[externalapi.DomainHashSize]byte{
