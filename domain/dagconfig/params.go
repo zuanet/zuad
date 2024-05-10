@@ -216,7 +216,6 @@ var MainnetParams = Params{
 	RPCPort:     "46110",
 	DefaultPort: "46111",
 	DNSSeeds: []string{
-		"176.117.76.41",
 		"125.164.10.121",
 		"maxzua.info",
 		"zuabaniov.com",
