@@ -217,7 +217,7 @@ var MainnetParams = Params{
 	DefaultPort: "46111",
 	DNSSeeds: []string{
 		"176.117.76.41",
-		"ixbase.info",
+		"125.164.10.121",
 		"maxzua.info",
 		"zuabaniov.com",
 		},
