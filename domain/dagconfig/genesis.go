@@ -48,7 +48,7 @@ var genesisBlock = externalapi.DomainBlock{
 		genesisMerkleRoot,
 		&externalapi.DomainHash{},
 		externalapi.NewDomainHashFromByteArray(muhash.EmptyMuHashHash.AsArray()),
-		1743571200, 511705087, 83330,
+		1710256895948, 511705087, 83330,
 		0, // Checkpoint DAA score
 		0,
 		big.NewInt(0),
