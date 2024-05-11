@@ -278,12 +278,10 @@ var TestnetParams = Params{
 	K:           defaultGHOSTDAGK,
 	Name:        "bugna-testnet-10",
 	Net:         appmessage.Testnet,
-	RPCPort:     "16210",
-	DefaultPort: "16211",
+	RPCPort:     "46010",
+	DefaultPort: "46005",
 	DNSSeeds: []string{
-		"testnet-10-dnsseed.kas.pa",
-		// This DNS seeder is run by Tiram
-		"seeder1-testnet.bugnad.net",
+		"125.164.1.204",
 	},
 
 	// DAG parameters
