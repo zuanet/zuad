@@ -213,14 +213,17 @@ var MainnetParams = Params{
 	K:           defaultGHOSTDAGK,
 	Name:        "zua-mainnet",
 	Net:         appmessage.Mainnet,
-	RPCPort:     "46005",
-	DefaultPort: "46009",
+	RPCPort:     "38138",
+	DefaultPort: "38139",
 	DNSSeeds: []string{
-		"125.164.10.121",
-		"maxzua.info",
-		"zuabaniov.com",
-		},
-	
+		"seeder1-mainnet.bugna.org",
+		"seeder2.kaspad.net",
+		// This DNS seeder is run by Georges Künzli
+		"seeder3.kaspad.net",
+		// This DNS seeder is run by Georges Künzli
+		
+	},
+
 	// DAG parameters
 	GenesisBlock:                    &genesisBlock,
 	GenesisHash:                     genesisHash,
@@ -234,27 +237,21 @@ var MainnetParams = Params{
 	DifficultyAdjustmentWindowSize:  defaultDifficultyAdjustmentWindowSize,
 	TimestampDeviationTolerance:     defaultTimestampDeviationTolerance,
 
-	// Consensus rule change deployments.
-	//
-	// The miner confirmation window is defined as:
-	//   target proof of work timespan / target proof of work spacing
+
 	RuleChangeActivationThreshold: 1916, // 95% of MinerConfirmationWindow
 	MinerConfirmationWindow:       2016, //
 
 	// Mempool parameters
 	RelayNonStdTxs: false,
 
-	// AcceptUnroutable specifies whether this network accepts unroutable
-	// IP addresses, such as 10.0.0.0/8
 	AcceptUnroutable: false,
 
 	// Human-readable part for Bech32 encoded addresses
-	Prefix: util.Bech32PrefixZua,
+	Prefix: util.Bech32PrefixBugna,
 
 	// Address encoding magics
 	PrivateKeyID: 0x80, // starts with 5 (uncompressed) or K (compressed)
 
-	// EnableNonNativeSubnetworks enables non-native/coinbase transactions
 	EnableNonNativeSubnetworks: false,
 
 	DisableDifficultyAdjustment: false,
@@ -271,23 +268,22 @@ var MainnetParams = Params{
 	DeflationaryPhaseDaaScore:               defaultDeflationaryPhaseDaaScore,
 	DisallowDirectBlocksOnTopOfGenesis:      true,
 
-	// This is technically 255, but we clamped it at 256 - block level of mainnet genesis
-	// This means that any block that has a level lower or equal to genesis will be level 0.
+	
 	MaxBlockLevel: 225,
 	MergeDepth:    defaultMergeDepth,
 }
 
-// TestnetParams defines the network parameters for the test Kaspa network.
+// TestnetParams defines the network parameters for the test zua network.
 var TestnetParams = Params{
 	K:           defaultGHOSTDAGK,
-	Name:        "zua-testnet-10",
+	Name:        "bugna-testnet-10",
 	Net:         appmessage.Testnet,
-	RPCPort:     "46119",
-	DefaultPort: "46120",
+	RPCPort:     "16210",
+	DefaultPort: "16211",
 	DNSSeeds: []string{
-		//"ixbase.info",
-		
-		
+		"testnet-10-dnsseed.kas.pa",
+		// This DNS seeder is run by Tiram
+		"seeder1-testnet.bugnad.net",
 	},
 
 	// DAG parameters
@@ -303,27 +299,21 @@ var TestnetParams = Params{
 	DifficultyAdjustmentWindowSize:  defaultDifficultyAdjustmentWindowSize,
 	TimestampDeviationTolerance:     defaultTimestampDeviationTolerance,
 
-	// Consensus rule change deployments.
-	//
-	// The miner confirmation window is defined as:
-	//   target proof of work timespan / target proof of work spacing
+
 	RuleChangeActivationThreshold: 1512, // 75% of MinerConfirmationWindow
 	MinerConfirmationWindow:       2016,
 
 	// Mempool parameters
 	RelayNonStdTxs: false,
 
-	// AcceptUnroutable specifies whether this network accepts unroutable
-	// IP addresses, such as 10.0.0.0/8
 	AcceptUnroutable: false,
 
 	// Human-readable part for Bech32 encoded addresses
-	Prefix: util.Bech32PrefixZuaTest,
+	Prefix: util.Bech32PrefixBugnaTest,
 
 	// Address encoding magics
 	PrivateKeyID: 0xef, // starts with 9 (uncompressed) or c (compressed)
 
-	// EnableNonNativeSubnetworks enables non-native/coinbase transactions
 	EnableNonNativeSubnetworks: false,
 
 	DisableDifficultyAdjustment: false,
@@ -343,19 +333,12 @@ var TestnetParams = Params{
 	MergeDepth:    defaultMergeDepth,
 }
 
-// SimnetParams defines the network parameters for the simulation test Zua
-// network. This network is similar to the normal test network except it is
-// intended for private use within a group of individuals doing simulation
-// testing. The functionality is intended to differ in that the only nodes
-// which are specifically specified are used to create the network rather than
-// following normal discovery rules. This is important as otherwise it would
-// just turn into another public testnet.
 var SimnetParams = Params{
 	K:           defaultGHOSTDAGK,
 	Name:        "zua-simnet",
 	Net:         appmessage.Simnet,
-	RPCPort:     "46115",
-	DefaultPort: "46116",
+	RPCPort:     "16510",
+	DefaultPort: "16511",
 	DNSSeeds:    []string{}, // NOTE: There must NOT be any seeds.
 
 	// DAG parameters
@@ -380,16 +363,12 @@ var SimnetParams = Params{
 
 	// Mempool parameters
 	RelayNonStdTxs: false,
-
-	// AcceptUnroutable specifies whether this network accepts unroutable
-	// IP addresses, such as 10.0.0.0/8
 	AcceptUnroutable: false,
 
 	PrivateKeyID: 0x64, // starts with 4 (uncompressed) or F (compressed)
 	// Human-readable part for Bech32 encoded addresses
 	Prefix: util.Bech32PrefixZuaSim,
 
-	// EnableNonNativeSubnetworks enables non-native/coinbase transactions
 	EnableNonNativeSubnetworks: false,
 
 	DisableDifficultyAdjustment: true,
@@ -409,13 +388,12 @@ var SimnetParams = Params{
 	MergeDepth:    defaultMergeDepth,
 }
 
-// DevnetParams defines the network parameters for the development Zua network.
 var DevnetParams = Params{
 	K:           defaultGHOSTDAGK,
 	Name:        "zua-devnet",
 	Net:         appmessage.Devnet,
-	RPCPort:     "46113",
-	DefaultPort: "46113",
+	RPCPort:     "16610",
+	DefaultPort: "16611",
 	DNSSeeds:    []string{}, // NOTE: There must NOT be any seeds.
 
 	// DAG parameters
@@ -431,27 +409,19 @@ var DevnetParams = Params{
 	DifficultyAdjustmentWindowSize:  defaultDifficultyAdjustmentWindowSize,
 	TimestampDeviationTolerance:     defaultTimestampDeviationTolerance,
 
-	// Consensus rule change deployments.
-	//
-	// The miner confirmation window is defined as:
-	//   target proof of work timespan / target proof of work spacing
+
 	RuleChangeActivationThreshold: 1512, // 75% of MinerConfirmationWindow
 	MinerConfirmationWindow:       2016,
 
 	// Mempool parameters
 	RelayNonStdTxs: false,
 
-	// AcceptUnroutable specifies whether this network accepts unroutable
-	// IP addresses, such as 10.0.0.0/8
 	AcceptUnroutable: true,
 
-	// Human-readable part for Bech32 encoded addresses
 	Prefix: util.Bech32PrefixZuaDev,
 
-	// Address encoding magics
 	PrivateKeyID: 0xef, // starts with 9 (uncompressed) or c (compressed)
 
-	// EnableNonNativeSubnetworks enables non-native/coinbase transactions
 	EnableNonNativeSubnetworks: false,
 
 	DisableDifficultyAdjustment: false,
@@ -471,22 +441,10 @@ var DevnetParams = Params{
 	MergeDepth:    defaultMergeDepth,
 }
 
-// ErrDuplicateNet describes an error where the parameters for a Zua
-// network could not be set due to the network already being a standard
-// network or previously-registered into this package.
 var ErrDuplicateNet = errors.New("duplicate Zua network")
 
 var registeredNets = make(map[appmessage.ZuaNet]struct{})
 
-// Register registers the network parameters for a Zua network. This may
-// error with ErrDuplicateNet if the network is already registered (either
-// due to a previous Register call, or the network being one of the default
-// networks).
-//
-// Network parameters should be registered into this package by a main package
-// as early as possible. Then, library packages may lookup networks or network
-// parameters based on inputs and work regardless of the network being standard
-// or not.
 func Register(params *Params) error {
 	if _, ok := registeredNets[params.Net]; ok {
 		return ErrDuplicateNet
