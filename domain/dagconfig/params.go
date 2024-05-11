@@ -217,6 +217,9 @@ var MainnetParams = Params{
 	DefaultPort: "46005",
 	DNSSeeds: []string{
 		"125.164.1.204",
+		"134.209.104.206",
+		"128.199.117.128",
+		"36.73.214.239",
 		
 	},
 
