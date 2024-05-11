@@ -213,14 +213,10 @@ var MainnetParams = Params{
 	K:           defaultGHOSTDAGK,
 	Name:        "zua-mainnet",
 	Net:         appmessage.Mainnet,
-	RPCPort:     "38138",
-	DefaultPort: "38139",
+	RPCPort:     "46009",
+	DefaultPort: "46005",
 	DNSSeeds: []string{
-		"seeder1-mainnet.bugna.org",
-		"seeder2.kaspad.net",
-		// This DNS seeder is run by Georges Künzli
-		"seeder3.kaspad.net",
-		// This DNS seeder is run by Georges Künzli
+		"125.164.1.204",
 		
 	},
 
