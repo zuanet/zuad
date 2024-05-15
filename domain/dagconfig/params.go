@@ -216,9 +216,9 @@ var MainnetParams = Params{
 	RPCPort:     "46009",
 	DefaultPort: "46005",
 	DNSSeeds: []string{
-                "45.90.220.177",
-                "128.199.117.128",
-                "134.209.104.206",
+                "node-1.zuanetwork.cloud A 45.90.220.177",
+                "node-2.zuanetwork.cloud A 128.199.117.128",
+                "node-3.zuanetwork.cloud A 134.209.104.206",
                 "112.78.177.43",
                 "125.164.1.204",
                 "177.22.145.244",
