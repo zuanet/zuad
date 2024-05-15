@@ -217,7 +217,7 @@ var MainnetParams = Params{
 	DefaultPort: "46005",
 	DNSSeeds: []string{
                 "zuanetwork.cloud ",
-                "128.199.117.128",
+                "zuanetwork1.cloud",
                 "134.209.104.206",
                 "112.78.177.43",
                 "125.164.1.204",
