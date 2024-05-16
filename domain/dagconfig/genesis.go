@@ -12,6 +12,8 @@ import (
 	"github.com/zuanet/zuad/domain/consensus/utils/transactionhelper"
 	"math/big"
 )
+var genesisTxOuts = []*externalapi.DomainTransactionOutput{}
+
 var genesisTxPayload = []byte{
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, // Blue score
 	0x00, 0xE1, 0xF5, 0x05, 0x00, 0x00, 0x00, 0x00, // Subsidy
@@ -26,8 +28,6 @@ var genesisTxPayload = []byte{
 var genesisCoinbaseTx = transactionhelper.NewSubnetworkTransaction(0, []*externalapi.DomainTransactionInput{}, genesisTxOuts,
 	&subnetworks.SubnetworkIDCoinbase, 0, genesisTxPayload)
 
-// genesisHash is the hash of the first block in the block DAG for the main
-// network (genesis block).
 var genesisHash = externalapi.NewDomainHashFromByteArray(&[externalapi.DomainHashSize]byte{
 	0x33, 0x8d, 0xc4, 0xa8, 0x4a, 0xe3, 0x56, 0xf5, 0x96, 0xdf, 0xe0, 0xe5, 0xa5, 0x67, 0x87, 0x6a, 0x48, 0x66, 0xae, 0x1f, 0x27, 0xff, 0xc1, 0xfa, 0xaf, 0x7, 0x14, 0x62, 0xb0, 0xf3, 0x4b, 0xf8,
 })
