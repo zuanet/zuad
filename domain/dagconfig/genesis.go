@@ -15,7 +15,7 @@ import (
 
 var genesisTxOuts = []*externalapi.DomainTransactionOutput{}
 
-var genesisTxPayload := []byte{
+var genesisTxPayload = []byte{
         0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, // Blue score
         0x00, 0xE1, 0xF5, 0x05, 0x00, 0x00, 0x00, 0x00, // Subsidy
         0x00, 0x00,                                     // script version
