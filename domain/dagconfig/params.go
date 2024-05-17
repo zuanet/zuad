@@ -218,7 +218,7 @@ var MainnetParams = Params{
 	DNSSeeds: []string{
                 "zuanetwork.cloud ",
                 "zuanetwork1.cloud",
-                "134.209.104.206",
+                "zuanetwork2.cloud", 
                 "112.78.177.43",
                 "125.164.1.204",
                 "177.22.145.244",
