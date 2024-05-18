@@ -8,6 +8,7 @@ import (
 	"testing"
 )
 
+
 type blockToCompare struct {
 	block          *externalapi.DomainBlock
 	expectedResult bool
