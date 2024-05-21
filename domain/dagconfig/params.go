@@ -274,10 +274,10 @@ var MainnetParams = Params{
 // TestnetParams defines the network parameters for the test zua network.
 var TestnetParams = Params{
 	K:           defaultGHOSTDAGK,
-	Name:        "bugna-testnet-10",
+	Name:        "zua-testnet-10",
 	Net:         appmessage.Testnet,
-	RPCPort:     "46010",
-	DefaultPort: "46005",
+	RPCPort:     "16118",
+	DefaultPort: "16120",
 	DNSSeeds: []string{
 		"125.164.1.204",
 	},
