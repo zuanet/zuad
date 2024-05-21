@@ -247,7 +247,7 @@ var MainnetParams = Params{
 		"174.82.173.16:46111",
 		"7.7.7.100:46111",
 		"176.104.53.246:46111",
-
+        },
 	// DAG parameters
 	GenesisBlock:                    &genesisBlock,
 	GenesisHash:                     genesisHash,
