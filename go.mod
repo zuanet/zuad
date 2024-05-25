@@ -1,4 +1,4 @@
-module github.com/zuanet/zuad
+module https://github.com/zuanet/zuad
 
 
 go 1.22.3
