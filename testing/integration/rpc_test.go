@@ -36,7 +36,7 @@ func connectAndClose(rpcAddress string) error {
 	return nil
 }
 
-func TestRPCClientZuaoutineLeak(t *testing.T) {
+func TestRPCClientGoroutineLeak(t *testing.T) {
 	_, teardown := setupHarness(t, &harnessParams{
 		p2pAddress:              p2pAddress1,
 		rpcAddress:              rpcAddress1,
@@ -44,16 +44,16 @@ func TestRPCClientZuaoutineLeak(t *testing.T) {
 		miningAddressPrivateKey: miningAddress1PrivateKey,
 	})
 	defer teardown()
-	numZuaoutinesBefore := runtime.NumZuaoutine()
+	numGoroutinesBefore := runtime.NumGoroutine()
 	for i := 1; i < 100; i++ {
 		err := connectAndClose(rpcAddress1)
 		if err != nil {
 			t.Fatalf("Failed to set up an RPC client: %s", err)
 		}
 		time.Sleep(10 * time.Millisecond)
-		if runtime.NumZuaoutine() > numZuaoutinesBefore+10 {
-			t.Fatalf("Number of zuaoutines is increasing for each RPC client open (%d -> %d), which indicates a memory leak",
-				numZuaoutinesBefore, runtime.NumZuaoutine())
+		if runtime.NumGoroutine() > numGoroutinesBefore+10 {
+			t.Fatalf("Number of goroutines is increasing for each RPC client open (%d -> %d), which indicates a memory leak",
+				numGoroutinesBefore, runtime.NumGoroutine())
 		}
 	}
 }
