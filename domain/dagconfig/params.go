@@ -25,32 +25,32 @@ var (
 	// the overhead of creating it multiple times.
 	bigOne = big.NewInt(1)
 
-	// mainPowMax is the highest proof of work value a Zua block can
+	// mainPowMax is the highest proof of work value a Zuad block can
 	// have for the main network. It is the value 2^255 - 1.
 	mainPowMax = new(big.Int).Sub(new(big.Int).Lsh(bigOne, 255), bigOne)
 
-	// testnetPowMax is the highest proof of work value a Zua block
+	// testnetPowMax is the highest proof of work value a Zuad block
 	// can have for the test network. It is the value 2^255 - 1.
 	testnetPowMax = new(big.Int).Sub(new(big.Int).Lsh(bigOne, 255), bigOne)
 
-	// simnetPowMax is the highest proof of work value a Zua block
+	// simnetPowMax is the highest proof of work value a  uad block
 	// can have for the simulation test network. It is the value 2^255 - 1.
 	simnetPowMax = new(big.Int).Sub(new(big.Int).Lsh(bigOne, 255), bigOne)
 
-	// devnetPowMax is the highest proof of work value a Zua block
+	// devnetPowMax is the highest proof of work value a Zuad block
 	// can have for the development network. It is the value
 	// 2^255 - 1.
 	devnetPowMax = new(big.Int).Sub(new(big.Int).Lsh(bigOne, 255), bigOne)
 )
 
-// KType defines the size of GHOSTDAG consensus alzuaithm K parameter.
+// KType defines the size of GHOSTDAG consensus algorithm K parameter.
 type KType uint8
 
-// Params defines a Zua network by its parameters. These parameters may be
-// used by Zua applications to differentiate networks as well as addresses
+// Params defines a Zuad network by its parameters. These parameters may be
+// used by Zuad applications to differentiate networks as well as addresses
 // and keys for one network from those intended for use on another network.
 type Params struct {
-	// K defines the K parameter for GHOSTDAG consensus alzuaithm.
+	// K defines the K parameter for GHOSTDAG consensus algorithm.
 	// See ghostdag.go for further details.
 	K externalapi.KType
 
@@ -69,8 +69,6 @@ type Params struct {
 	// DNSSeeds defines a list of DNS seeds for the network that are used
 	// as one method to discover peers.
 	DNSSeeds []string
-	// AdditionalNodes to discover peers.
-	AdditionalNodes []string
 
 	// GRPCSeeds defines a list of GRPC seeds for the network that are used
 	// as one method to discover peers.
@@ -92,7 +90,7 @@ type Params struct {
 
 	// SubsidyGenesisReward SubsidyMergeSetRewardMultiplier, and
 	// SubsidyPastRewardMultiplier are part of the block subsidy equation.
-	// Further details: https://hashdag.medium.com/kaspa-launch-plan-9a63f4d754a6
+	// Further details: https://hashdag.medium.com/zuad-launch-plan-9a63f4d754a6
 	SubsidyGenesisReward            uint64
 	PreDeflationaryPhaseBaseSubsidy uint64
 	DeflationaryPhaseBaseSubsidy    uint64
@@ -177,7 +175,7 @@ type Params struct {
 	// CoinbasePayloadScriptPublicKeyMaxLength is the maximum allowed script public key in the coinbase's payload
 	CoinbasePayloadScriptPublicKeyMaxLength uint8
 
-	// PruningProofM is the 'm' constant in the pruning proof. For more details see: https://github.com/kaspanet/research/issues/3
+	// PruningProofM is the 'm' constant in the pruning proof. For more details see: https://github.com/zuanet/research/issues/3
 	PruningProofM uint64
 
 	// DeflationaryPhaseDaaScore is the DAA score after which the monetary policy switches
@@ -211,44 +209,16 @@ func (p *Params) PruningDepth() uint64 {
 // MainnetParams defines the network parameters for the main Zua network.
 var MainnetParams = Params{
 	K:           defaultGHOSTDAGK,
-	Name:        "zua-mainnet",
+	Name:        "zuad-mainnet",
 	Net:         appmessage.Mainnet,
-	RPCPort:     "46009",
-	DefaultPort: "46005",
+	RPCPort:     "46005",
+	DefaultPort: "46009",
 	DNSSeeds: []string{
-                "zuanetwork1.cloud",
-                "zuanetwork2.cloud", 	
+		"zuanetwork1.cloud",
+		"zuanetwork2.cloud",
 	},
-	AdditionalNodes: []string{
-		"176.104.53.246:46005",
-		"84.32.84.32:46005",
-		"103.153.72.232:46005",
-		"94.198.55.192:46005",
-		"103.150.92.155:46005",
-		"62.90.142.93:46005",
-		"176.104.53.246:46005",
-		"71.251.60.16:46005",
-		"185.218.126.127:46005",
-		"95.144.209.155:46005",
-		"172.168.0.13:46005",
-		"68.8.117.160:46005",
-		"185.218.126:46005",
-		"78.24.220.85:46005",
-		"142.132.156.41:46005",
-		"172.168.0.19:46005",
-		"172.168.0.12:46005",
-		"144.91.100.26:46005",
-		"86.31.224.9:46005",
-		"51.195.62.151:46005",
-		"172.100.100.24:46005",
-		"141.95.124.99:46005",
-		"62.72.46.140:46005",
-		"45.32.82.142:46005",
-		"174.82.173.16:46005",
-		"7.7.7.100:46005",
-		"176.104.53.246:46005",
-         },
-		// DAG parameters
+
+	// DAG parameters
 	GenesisBlock:                    &genesisBlock,
 	GenesisHash:                     genesisHash,
 	PowMax:                          mainPowMax,
@@ -261,21 +231,27 @@ var MainnetParams = Params{
 	DifficultyAdjustmentWindowSize:  defaultDifficultyAdjustmentWindowSize,
 	TimestampDeviationTolerance:     defaultTimestampDeviationTolerance,
 
-
+	// Consensus rule change deployments.
+	//
+	// The miner confirmation window is defined as:
+	//   target proof of work timespan / target proof of work spacing
 	RuleChangeActivationThreshold: 1916, // 95% of MinerConfirmationWindow
 	MinerConfirmationWindow:       2016, //
 
 	// Mempool parameters
 	RelayNonStdTxs: false,
 
+	// AcceptUnroutable specifies whether this network accepts unroutable
+	// IP addresses, such as 10.0.0.0/8
 	AcceptUnroutable: false,
 
 	// Human-readable part for Bech32 encoded addresses
-	Prefix: util.Bech32PrefixZua,
+	Prefix: util.Bech32PrefixZuad,
 
 	// Address encoding magics
 	PrivateKeyID: 0x80, // starts with 5 (uncompressed) or K (compressed)
 
+	// EnableNonNativeSubnetworks enables non-native/coinbase transactions
 	EnableNonNativeSubnetworks: false,
 
 	DisableDifficultyAdjustment: false,
@@ -292,21 +268,20 @@ var MainnetParams = Params{
 	DeflationaryPhaseDaaScore:               defaultDeflationaryPhaseDaaScore,
 	DisallowDirectBlocksOnTopOfGenesis:      true,
 
-	
+	// This is technically 255, but we clamped it at 256 - block level of mainnet genesis
+	// This means that any block that has a level lower or equal to genesis will be level 0.
 	MaxBlockLevel: 225,
 	MergeDepth:    defaultMergeDepth,
 }
 
-// TestnetParams defines the network parameters for the test zua network.
+// TestnetParams defines the network parameters for the test Zuad network.
 var TestnetParams = Params{
 	K:           defaultGHOSTDAGK,
-	Name:        "zua-testnet-10",
+	Name:        "zuad-testnet-10",
 	Net:         appmessage.Testnet,
-	RPCPort:     "16118",
-	DefaultPort: "16120",
-	DNSSeeds: []string{
-		"125.164.1.204",
-	},
+	RPCPort:     "16210",
+	DefaultPort: "16211",
+	DNSSeeds:    []string{},
 
 	// DAG parameters
 	GenesisBlock:                    &testnetGenesisBlock,
@@ -321,21 +296,27 @@ var TestnetParams = Params{
 	DifficultyAdjustmentWindowSize:  defaultDifficultyAdjustmentWindowSize,
 	TimestampDeviationTolerance:     defaultTimestampDeviationTolerance,
 
-
+	// Consensus rule change deployments.
+	//
+	// The miner confirmation window is defined as:
+	//   target proof of work timespan / target proof of work spacing
 	RuleChangeActivationThreshold: 1512, // 75% of MinerConfirmationWindow
 	MinerConfirmationWindow:       2016,
 
 	// Mempool parameters
 	RelayNonStdTxs: false,
 
+	// AcceptUnroutable specifies whether this network accepts unroutable
+	// IP addresses, such as 10.0.0.0/8
 	AcceptUnroutable: false,
 
 	// Human-readable part for Bech32 encoded addresses
-	Prefix: util.Bech32PrefixZuaTest,
+	Prefix: util.Bech32PrefixZuadTest,
 
 	// Address encoding magics
 	PrivateKeyID: 0xef, // starts with 9 (uncompressed) or c (compressed)
 
+	// EnableNonNativeSubnetworks enables non-native/coinbase transactions
 	EnableNonNativeSubnetworks: false,
 
 	DisableDifficultyAdjustment: false,
@@ -355,9 +336,16 @@ var TestnetParams = Params{
 	MergeDepth:    defaultMergeDepth,
 }
 
+// SimnetParams defines the network parameters for the simulation test Zuad
+// network. This network is similar to the normal test network except it is
+// intended for private use within a group of individuals doing simulation
+// testing. The functionality is intended to differ in that the only nodes
+// which are specifically specified are used to create the network rather than
+// following normal discovery rules. This is important as otherwise it would
+// just turn into another public testnet.
 var SimnetParams = Params{
 	K:           defaultGHOSTDAGK,
-	Name:        "zua-simnet",
+	Name:        "zuad-simnet",
 	Net:         appmessage.Simnet,
 	RPCPort:     "16510",
 	DefaultPort: "16511",
@@ -385,12 +373,16 @@ var SimnetParams = Params{
 
 	// Mempool parameters
 	RelayNonStdTxs: false,
+
+	// AcceptUnroutable specifies whether this network accepts unroutable
+	// IP addresses, such as 10.0.0.0/8
 	AcceptUnroutable: false,
 
 	PrivateKeyID: 0x64, // starts with 4 (uncompressed) or F (compressed)
 	// Human-readable part for Bech32 encoded addresses
-	Prefix: util.Bech32PrefixZuaSim,
+	Prefix: util.Bech32PrefixZuadSim,
 
+	// EnableNonNativeSubnetworks enables non-native/coinbase transactions
 	EnableNonNativeSubnetworks: false,
 
 	DisableDifficultyAdjustment: true,
@@ -410,9 +402,10 @@ var SimnetParams = Params{
 	MergeDepth:    defaultMergeDepth,
 }
 
+// DevnetParams defines the network parameters for the development Zuad network.
 var DevnetParams = Params{
 	K:           defaultGHOSTDAGK,
-	Name:        "zua-devnet",
+	Name:        "zuad-devnet",
 	Net:         appmessage.Devnet,
 	RPCPort:     "16610",
 	DefaultPort: "16611",
@@ -431,19 +424,27 @@ var DevnetParams = Params{
 	DifficultyAdjustmentWindowSize:  defaultDifficultyAdjustmentWindowSize,
 	TimestampDeviationTolerance:     defaultTimestampDeviationTolerance,
 
-
+	// Consensus rule change deployments.
+	//
+	// The miner confirmation window is defined as:
+	//   target proof of work timespan / target proof of work spacing
 	RuleChangeActivationThreshold: 1512, // 75% of MinerConfirmationWindow
 	MinerConfirmationWindow:       2016,
 
 	// Mempool parameters
 	RelayNonStdTxs: false,
 
+	// AcceptUnroutable specifies whether this network accepts unroutable
+	// IP addresses, such as 10.0.0.0/8
 	AcceptUnroutable: true,
 
-	Prefix: util.Bech32PrefixZuaDev,
+	// Human-readable part for Bech32 encoded addresses
+	Prefix: util.Bech32PrefixZuadDev,
 
+	// Address encoding magics
 	PrivateKeyID: 0xef, // starts with 9 (uncompressed) or c (compressed)
 
+	// EnableNonNativeSubnetworks enables non-native/coinbase transactions
 	EnableNonNativeSubnetworks: false,
 
 	DisableDifficultyAdjustment: false,
@@ -463,10 +464,22 @@ var DevnetParams = Params{
 	MergeDepth:    defaultMergeDepth,
 }
 
-var ErrDuplicateNet = errors.New("duplicate Zua network")
+// ErrDuplicateNet describes an error where the parameters for a Zuad
+// network could not be set due to the network already being a standard
+// network or previously-registered into this package.
+var ErrDuplicateNet = errors.New("duplicate Zuad network")
 
-var registeredNets = make(map[appmessage.ZuaNet]struct{})
+var registeredNets = make(map[appmessage.ZuadNet]struct{})
 
+// Register registers the network parameters for a Zuad network. This may
+// error with ErrDuplicateNet if the network is already registered (either
+// due to a previous Register call, or the network being one of the default
+// networks).
+//
+// Network parameters should be registered into this package by a main package
+// as early as possible. Then, library packages may lookup networks or network
+// parameters based on inputs and work regardless of the network being standard
+// or not.
 func Register(params *Params) error {
 	if _, ok := registeredNets[params.Net]; ok {
 		return ErrDuplicateNet
