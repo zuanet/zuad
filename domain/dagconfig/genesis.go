@@ -1,21 +1,3 @@
-// Copyright (c) 2014-2016 The btcsuite developers
-// Use of this source code is governed by an ISC
-// license that can be found in the LICENSE file.
-
-package dagconfig
-
-import (
-	"github.com/kaspanet/go-muhash"
-	"github.com/zuanet/zuad/domain/consensus/model/externalapi"
-	"github.com/zuanet/zuad/domain/consensus/utils/blockheader"
-	"github.com/zuanet/zuad/domain/consensus/utils/subnetworks"
-	"github.com/zuanet/zuad/domain/consensus/utils/transactionhelper"
-	"math/big"
-)
-
-// Copyright (c) 2014-2016 The btcsuite developers
-// Use of this source code is governed by an ISC
-// license that can be found in the LICENSE file.
 
 package dagconfig
 
