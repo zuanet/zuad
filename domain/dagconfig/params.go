@@ -246,7 +246,7 @@ var MainnetParams = Params{
 	AcceptUnroutable: false,
 
 	// Human-readable part for Bech32 encoded addresses
-	Prefix: util.Bech32PrefixZuad,
+	Prefix: util.Bech32PrefixZua,
 
 	// Address encoding magics
 	PrivateKeyID: 0x80, // starts with 5 (uncompressed) or K (compressed)
@@ -311,7 +311,7 @@ var TestnetParams = Params{
 	AcceptUnroutable: false,
 
 	// Human-readable part for Bech32 encoded addresses
-	Prefix: util.Bech32PrefixZuadTest,
+	Prefix: util.Bech32PrefixZuaTest,
 
 	// Address encoding magics
 	PrivateKeyID: 0xef, // starts with 9 (uncompressed) or c (compressed)
@@ -439,7 +439,7 @@ var DevnetParams = Params{
 	AcceptUnroutable: true,
 
 	// Human-readable part for Bech32 encoded addresses
-	Prefix: util.Bech32PrefixZuadDev,
+	Prefix: util.Bech32PrefixZuaDev,
 
 	// Address encoding magics
 	PrivateKeyID: 0xef, // starts with 9 (uncompressed) or c (compressed)
@@ -467,9 +467,8 @@ var DevnetParams = Params{
 // ErrDuplicateNet describes an error where the parameters for a Zuad
 // network could not be set due to the network already being a standard
 // network or previously-registered into this package.
-var ErrDuplicateNet = errors.New("duplicate Zuad network")
 
-var registeredNets = make(map[appmessage.ZuadNet]struct{})
+var registeredNets = make(map[appmessage.ZuaNet]struct{})
 
 // Register registers the network parameters for a Zuad network. This may
 // error with ErrDuplicateNet if the network is already registered (either
