@@ -380,7 +380,7 @@ var SimnetParams = Params{
 
 	PrivateKeyID: 0x64, // starts with 4 (uncompressed) or F (compressed)
 	// Human-readable part for Bech32 encoded addresses
-	Prefix: util.Bech32PrefixZuadSim,
+	Prefix: util.Bech32PrefixZuaSim,
 
 	// EnableNonNativeSubnetworks enables non-native/coinbase transactions
 	EnableNonNativeSubnetworks: false,
@@ -467,8 +467,29 @@ var DevnetParams = Params{
 // ErrDuplicateNet describes an error where the parameters for a Zuad
 // network could not be set due to the network already being a standard
 // network or previously-registered into this package.
-
 var registeredNets = make(map[appmessage.ZuaNet]struct{})
+
+// ErrDuplicateNet is an error indicating that the network is already registered.
+var ErrDuplicateNet = errors.New("network is already registered")
+
+// Register registers the network parameters for a Zuad network. This may
+// error with ErrDuplicateNet if the network is already registered (either
+// due to a previous Register call, or the network being one of the default
+// networks).
+//
+// Network parameters should be registered into this package by a main package
+// as early as possible. Then, library packages may lookup networks or network
+// parameters based on inputs and work regardless of the network being standard
+// or not.
+func Register(params *Params) error {
+	if _, ok := registeredNets[params.Net]; ok {
+		return ErrDuplicateNet
+	}
+	registeredNets[params.Net] = struct{}{}
+
+	return nil
+}
+
 
 // Register registers the network parameters for a Zuad network. This may
 // error with ErrDuplicateNet if the network is already registered (either
