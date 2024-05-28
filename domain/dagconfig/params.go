@@ -490,25 +490,6 @@ func Register(params *Params) error {
 	return nil
 }
 
-
-// Register registers the network parameters for a Zuad network. This may
-// error with ErrDuplicateNet if the network is already registered (either
-// due to a previous Register call, or the network being one of the default
-// networks).
-//
-// Network parameters should be registered into this package by a main package
-// as early as possible. Then, library packages may lookup networks or network
-// parameters based on inputs and work regardless of the network being standard
-// or not.
-func Register(params *Params) error {
-	if _, ok := registeredNets[params.Net]; ok {
-		return ErrDuplicateNet
-	}
-	registeredNets[params.Net] = struct{}{}
-
-	return nil
-}
-
 // mustRegister performs the same function as Register except it panics if there
 // is an error. This should only be called from package init functions.
 func mustRegister(params *Params) {
