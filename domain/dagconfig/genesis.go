@@ -12,57 +12,51 @@ import (
 )
 var genesisTxOuts = []*externalapi.DomainTransactionOutput{}
 
-var genesisTxPayload = []byte{
-	0x47, 0x65, 0x6e, 0x65, 0x73, 0x69, 0x73, 0x20,
-	0x54, 0x72, 0x61, 0x6e, 0x73, 0x61, 0x63, 0x74, 
+	var genesisTxPayload = []byte{
+		0x47, 0x65, 0x6e, 0x65, 0x73, 0x69, 0x73, 0x20,
+		0x54, 0x72, 0x61, 0x6e, 0x73, 0x61, 0x63, 0x74,
+	})
 
-var genesisCoinbaseTx = transactionhelper.NewSubnetworkTransaction(0, []*externalapi.DomainTransactionInput{}, genesisTxOuts,
-	&subnetworks.SubnetworkIDCoinbase, 0, genesisTxPayload)
+	var genesisCoinbaseTx = transactionhelper.NewSubnetworkTransaction(0, []*externalapi.DomainTransactionInput{}, genesisTxOuts,
+		&subnetworks.SubnetworkIDCoinbase, 0, genesisTxPayload)
 
-// genesisHash is the hash of the first block in the block DAG for the main
-// network (genesis block).
-var genesisHash = externalapi.NewDomainHashFromByteArray(&[externalapi.DomainHashSize]byte{
-	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-})
+	// genesisHash is the hash of the first block in the block DAG for the main
+	// network (genesis block).
+	var genesisHash = externalapi.NewDomainHashFromByteArray(&[externalapi.DomainHashSize]byte{
+		0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+		0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+		0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+		0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+	})
 
-var genesisMerkleRoot = externalapi.NewDomainHashFromByteArray(&[externalapi.DomainHashSize]byte{
-      0x78, 0x24, 0x2c, 0x0d, 0x0e, 0x00, 0x7f, 0x3f,
-      0x2e, 0xc6, 0x76, 0x99, 0x88, 0x0f, 0xb7, 0x8d,
-      0x12, 0xcb, 0xbe, 0xc4, 0x34, 0xbd, 0x83, 0x9d,
-      0x5b, 0x5a, 0x1f, 0x93, 0xaa, 0x1a, 0xbb, 0x42,
-}) 
+	var genesisMerkleRoot = externalapi.NewDomainHashFromByteArray(&[externalapi.DomainHashSize]byte{
+		0x78, 0x24, 0x2c, 0x0d, 0x0e, 0x00, 0x7f, 0x3f,
+		0x2e, 0xc6, 0x76, 0x99, 0x88, 0x0f, 0xb7, 0x8d,
+		0x12, 0xcb, 0xbe, 0xc4, 0x34, 0xbd, 0x83, 0x9d,
+		0x5b, 0x5a, 0x1f, 0x93, 0xaa, 0x1a, 0xbb, 0x42,
+	})
 
-// genesisBlock defines the genesis block of the block DAG which serves as the
-// public transaction ledger for the main network.
-var genesisBlock = externalapi.DomainBlock{
-	Header: blockheader.NewImmutableBlockHeader(
-		0,
-		[]externalapi.BlockLevelParents{},
-		genesisMerkleRoot,
-		&externalapi.DomainHash{},
-		externalapi.NewDomainHashFromByteArray(muhash.EmptyMuHashHash.AsArray()),
-		1710256895948, 511705087, 83330,
-		0, // Checkpoint DAA score
-		0,
-		big.NewInt(0),
-		&externalapi.DomainHash{},
-	),
-	Transactions: []*externalapi.DomainTransaction{genesisCoinbaseTx},
+	// genesisBlock defines the genesis block of the block DAG which serves as the
+	// public transaction ledger for the main network.
+	var genesisBlock = externalapi.DomainBlock{
+		Header: blockheader.NewImmutableBlockHeader(
+			0,
+			[]externalapi.BlockLevelParents{},
+			genesisMerkleRoot,
+			&externalapi.DomainHash{},
+			externalapi.NewDomainHashFromByteArray(muhash.EmptyMuHashHash.AsArray()),
+			1710256895948, 511705087, 83330,
+			0, // Checkpoint DAA score
+			0,
+			big.NewInt(0),
+			&externalapi.DomainHash{},
+		),
+		Transactions: []*externalapi.DomainTransaction{genesisCoinbaseTx},
+	}
+
+	// Now you can use the genesisBlock variable as needed in your code.
 }
 
-var devnetGenesisTxOuts = []*externalapi.DomainTransactionOutput{}
-
-var devnetGenesisTxPayload = []byte{
-	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, // Blue score
-	0x00, 0xE1, 0xF5, 0x05, 0x00, 0x00, 0x00, 0x00, // Subsidy
-	0x00, 0x00, // Script version
-	0x01,                                                                   // Varint
-	0x00,                                                                   // OP-FALSE
-	0x6b, 0x61, 0x73, 0x70, 0x61, 0x2d, 0x64, 0x65, 0x76, 0x6e, 0x65, 0x74, 
-}
 
 // devnetGenesisCoinbaseTx is the coinbase transaction for the genesis blocks for
 // the development network.
