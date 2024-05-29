@@ -219,3 +219,4 @@ var testnetGenesisBlock = externalapi.DomainBlock{
 		&externalapi.DomainHash{},
 	),
 	Transactions: []*externalapi.DomainTransaction{testnetGenesisCoinbaseTx},
+}
