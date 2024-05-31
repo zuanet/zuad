@@ -10,6 +10,7 @@ import (
 	"github.com/zuanet/zuad/domain/consensus/utils/subnetworks"
 	"github.com/zuanet/zuad/domain/consensus/utils/transactionhelper"
 )
+var genesisTxOuts = []*externalapi.DomainTransactionOutput{}
 
 var genesisTxPayload = []byte{
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, // Blue score
