@@ -46,22 +46,20 @@ var genesisMerkleRoot = externalapi.NewDomainHashFromByteArray(&[externalapi.Dom
     0xd7, 0x9a, 0x1e, 0xba, 0x2a, 0x05, 0x45, 0x95,
 })
 
-// genesisBlock defines the genesis block of the block DAG which serves as the
-// public transaction ledger for the main network.
 var genesisBlock = externalapi.DomainBlock{
-    Header: blockheader.NewImmutableBlockHeader(
-        0,
-        []externalapi.BlockLevelParents{},
-        genesisMerkleRoot,
-        &externalapi.DomainHash{},
-        externalapi.NewDomainHashFromByteArray(muhash.EmptyMuHashHash.AsArray()),
-        currentTimestamp, 511705087, 83330, // Updated timestamp
-        0, // Checkpoint DAA score
-        0,
-        big.NewInt(0),
-        &externalapi.DomainHash{},
-    ),
-    Transactions: []*externalapi.DomainTransaction{genesisCoinbaseTx},
+	Header: blockheader.NewImmutableBlockHeader(
+		0,
+		[]externalapi.BlockLevelParents{},
+		genesisMerkleRoot,
+		&externalapi.DomainHash{},
+		externalapi.NewDomainHashFromByteArray(muhash.EmptyMuHashHash.AsArray()),
+		1710256895948, 511705087, 83330,
+		0, // Checkpoint DAA score
+		0,
+		big.NewInt(0),
+		&externalapi.DomainHash{},
+	),
+	Transactions: []*externalapi.DomainTransaction{genesisCoinbaseTx},
 }
 
 var devnetGenesisTxOuts = []*externalapi.DomainTransactionOutput{}
