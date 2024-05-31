@@ -3,8 +3,6 @@ module github.com/zuanet/zuad
 
 go 1.18
 
-require github.com/zuanet/zuad v0.0.0-20240521130438-b586223ccba2
-
 require (
 	cloud.google.com/go v0.26.0 // indirect
 	github.com/aead/siphash v1.0.1 // indirect
