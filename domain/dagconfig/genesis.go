@@ -46,9 +46,6 @@ var genesisMerkleRoot = externalapi.NewDomainHashFromByteArray(&[externalapi.Dom
     0xd7, 0x9a, 0x1e, 0xba, 0x2a, 0x05, 0x45, 0x95,
 })
 
-// Update the timestamp to the current time
-var currentTimestamp = time.Now().UnixNano() / 1e6 // Convert to milliseconds
-
 // genesisBlock defines the genesis block of the block DAG which serves as the
 // public transaction ledger for the main network.
 var genesisBlock = externalapi.DomainBlock{
