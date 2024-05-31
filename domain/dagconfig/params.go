@@ -215,7 +215,7 @@ var MainnetParams = Params{
 	DefaultPort: "46009",
 	DNSSeeds: []string{
 		"zuanetwork1.cloud",
-		"zuanetwork2.cloud",
+		"zuanetwork.3utilities.com",
 	},
 
 	// DAG parameters
