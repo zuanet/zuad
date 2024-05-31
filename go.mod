@@ -1,7 +1,7 @@
 module github.com/zuanet/zuad
 
 
-go 1.22.3
+go 1.18
 
 require github.com/zuanet/zuad v0.0.0-20240521130438-b586223ccba2
 
