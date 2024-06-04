@@ -19,7 +19,7 @@ func main() {
 	return
     }
     defer dbb.Close()
-	dbPath := filepath.Join("/home/ixb/.bitmemed/gor-mainnet/datadir2", "log")
+	dbPath := filepath.Join("/home/ixb/.gord/gor-mainnet/datadir2", "log")
 	db, err := leveldb.OpenFile(dbPath, nil)
 	if err != nil {
 		log.Fatal("Yikes!")
