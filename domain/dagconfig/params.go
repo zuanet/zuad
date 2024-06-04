@@ -211,11 +211,13 @@ var MainnetParams = Params{
 	K:           defaultGHOSTDAGK,
 	Name:        "zuad-mainnet",
 	Net:         appmessage.Mainnet,
-	RPCPort:     "46005",
-	DefaultPort: "46009",
+	RPCPort:     "46110",
+	DefaultPort: "46111",
 	DNSSeeds: []string{
-		"zuanetwork1.cloud",
-		"zuanetwork.3utilities.com",
+		"91.219.62.220:46111",
+		"46.175.145.142:46111",
+		"174.109.136.162:46111",
+		
 	},
 
 	// DAG parameters
