@@ -3,9 +3,9 @@ package main
 import (
 	"fmt"
 	"github.com/kaspanet/kaspad/blockdag"
-	"github.com/kaspanet/kaspad/domain/consensus/model/externalapi"
-	"github.com/kaspanet/kaspad/infrastructure/logger"
-	"github.com/kaspanet/kaspad/stability-tests/common"
+	"github.com/zuanet/zuad/domain/consensus/model/externalapi"
+	"github.com/zuanet/zuad/infrastructure/logger"
+	"github.com/zuanet/zuad/stability-tests/common"
 	"os"
 )
 
