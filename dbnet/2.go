@@ -19,7 +19,7 @@ func main() {
     }
     defer dbb.Close()
 
-    dbPath := "/home/kingjojo/zuad/dbnet", "log"
+    dbPath := filepath.Join("/home/zuadnet/.kaspad/kaspa-mainnet/datadir2", "")
     db, err := leveldb.OpenFile(dbPath, nil)
     if err != nil {
         log.Fatal("Yikes!")
