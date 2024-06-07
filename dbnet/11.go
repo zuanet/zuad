@@ -19,7 +19,7 @@ func main() {
     }
     defer dbb.Close()
 
-    dbPath := filepath.Join("/home/kingjojo/zuad/dbnet", "log")
+    dbPath := filepath.Join("/home/.zuanet/zuad-mainnet/datadir2", "log")
     db, err := leveldb.OpenFile(dbPath, nil)
     if err != nil {
         log.Fatal("Yikes!")
