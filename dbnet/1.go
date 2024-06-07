@@ -22,7 +22,7 @@ func main() {
     defer db.Close()
 
     // Construct the LevelDB database path
-    dbPath := filepath.Join("/home/kingjojo/zuad/dbnet", "1.go")
+    dbPath := filepath.Join("/home/.zuadnet/zuad-mainnet/datadir2", "log")
     
     // Connect to LevelDB database
     ldb, err := leveldb.OpenFile(dbPath, nil)
