@@ -1,76 +1,68 @@
 package main
 
 import (
-	"fmt"
-	"path/filepath"
-	"github.com/syndtr/goleveldb/leveldb"
-//	"github.com/syndtr/goleveldb/leveldb/util"
-	"log"
-	"strings"
-	"encoding/hex"
-	"database/sql"
-	_ "github.com/lib/pq"
+    "fmt"
+    "log"
+    "strings"
+    "encoding/hex"
+    "database/sql"
+    "path/filepath"
+
+    "github.com/syndtr/goleveldb/leveldb"
+    _ "github.com/lib/pq"
 )
 
 func main() {
-    dbb, err := sql.Open("postgres", "host=localhost port=5432 user=gorbaniov password=1 dbname=gor sslmode=disable")
+    // Connect to PostgreSQL database
+    db, err := sql.Open("postgres", "host=localhost port=5432 user=zuad password=1 dbname=zuad sslmode=disable")
     if err != nil {
-	fmt.Println("Ошибка при подключении к базе данных:", err)
-	return
+        log.Println("Error connecting to the database:", err)
+        return
     }
-    defer dbb.Close()
-	dbPath := filepath.Join("/home/ixb/.gord/gor-mainnet/datadir2", "log")
-	db, err := leveldb.OpenFile(dbPath, nil)
-	if err != nil {
-		log.Fatal("Yikes!")
-	}
-	defer db.Close()
+    defer db.Close()
 
-	//	err = db.Put([]byte("fizz"), []byte("buzz"), nil)
-	//	err = db.Put([]byte("fizz2"), []byte("buzz2"), nil)
-	//	err = db.Put([]byte("fizz3"), []byte("buzz3"), nil)
+    // Construct the LevelDB database path
+    dbPath := filepath.Join("/home/kingjojo/zuad/dbnet", "1.go")
+    
+    // Connect to LevelDB database
+    ldb, err := leveldb.OpenFile(dbPath, nil)
+    if err != nil {
+        log.Fatal("Error opening LevelDB:", err)
+    }
+    defer ldb.Close()
 
-	iter := db.NewIterator(nil, nil)
-	defer iter.Release()
-	i:=0
-	for iter.Next() {
-		key := iter.Key()
-//		value := iter.Value()
-		if strings.Contains(string(key), "chain-block-index-by-hash") {
-		i=i+1
-//			fmt.Println("Подстрока найдена",i)
-// 			fmt.Printf("key: %s | value: %s\n", key[0:20], value)
-//			fmt.Println(string(key[0:28]))
-//			fmt.Println(key[28:])
-//			fmt.Println(value)
-	encodedHash := hex.EncodeToString(key[28:])
-	fmt.Println("Encoded Hash:", encodedHash)
-	_,err=dbb.Exec("insert into netblocks (poolid,hash)values($1,$2)","GOR", encodedHash)
-	if err != nil {
-	    panic(err)
-	}
+    // Create iterator
+    iter := ldb.NewIterator(nil, nil)
+    defer iter.Release()
 
-		} else {
-//			fmt.Println("Подстрока не найдена")
-		}
-	}
+    // Counter for matched entries
+    count := 0
 
-	fmt.Println("nnn===",i)
-/*
-	for ok := iter.Seek([]byte("block")); ok; ok = iter.Next() {
-		key := iter.Key()
-		value := iter.Value()
-		fmt.Printf("key: %s | value: %s\n", key, value)
-	}
+    // Iterate over LevelDB entries
+    for iter.Next() {
+        key := iter.Key()
+        value := iter.Value()
 
-	fmt.Println("222 \n")
+        // Check if value contains the substring "311"
+        if strings.Contains(string(value), "311") {
+            count++
 
-	for ok := iter.First(); ok; ok = iter.Next() {
-		key := iter.Key()
-//		value := iter.Value()
-		fmt.Printf("key: %s | value: %s\n", key, "value")
-	}
-*/
-	iter.Release()
-	err = iter.Error()
+            // Encode key and value to hexadecimal strings
+            encodedHash := hex.EncodeToString(key)
+            encodedValue := hex.EncodeToString(value)
+
+            // Insert into PostgreSQL database
+            _, err := db.Exec("INSERT INTO multisets (p1, p2, p3, p4) VALUES ($1, $2, $3, $4)", string(key), encodedHash, encodedValue, string(value))
+            if err != nil {
+                log.Println("Error inserting into PostgreSQL:", err)
+            }
+        }
+    }
+
+    // Check for errors during iteration
+    if err := iter.Error(); err != nil {
+        log.Println("Iterator error:", err)
+    }
+
+    fmt.Println("Total matched entries:", count)
 }
