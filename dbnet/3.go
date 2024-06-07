@@ -14,7 +14,7 @@ import (
 )
 
 func main() {
-    dbb, err := sql.Open("postgres", "host=localhost port=5432 user=gorbaniov password=1 dbname=gor sslmode=disable")
+    dbb, err := sql.Open("postgres", "host=localhost port=5432 user=zuad password=1 dbname=zua sslmode=disable")
     if err != nil {
 	fmt.Println("Ошибка при подключении к базе данных:", err)
 	return
