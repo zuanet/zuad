@@ -27,5 +27,5 @@ RUN apk add --no-cache ca-certificates tini
 COPY --from=build /go/src/github.com/zuanet/zuad/zuad /app/
 COPY --from=build /go/src/github.com/zuanet/zuad/infrastructure/config/sample-zuad.conf /app/
 
-USER nobody
+USER root
 ENTRYPOINT [ "/sbin/tini", "--" ]
