@@ -2,15 +2,15 @@ version: "3"
 
 services:
 
-  karlsend:
-    container_name: karlsend
-    image: karlsennetwork/karlsend:latest
+  zuad:
+    container_name: zuad
+    image: zuanet/zuad:latest
     restart: unless-stopped
     ports:
-      - "42110:42110/tcp"
-      - "42111:42111/tcp"
+      - "46005:46005/tcp"
+      - "46009:46009/tcp"
     volumes:
-      - $HOME/.karlsend:/app/data/
+      - $HOME/.zuad:/app/data/
 # use managed volumes
-#      - karlsend:/app/data/
-    command:  ./karlsend --utxoindex --connect=mainnet-dnsseed-1.karlsencoin.com --appdir=/app/data
+#      - zuad:/app/data/
+    command:  ./zuad --utxoindex --connect=mainnet-dnsseed-1.zuanetwork.com --appdir=/app/data
