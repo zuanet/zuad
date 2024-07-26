@@ -1,6 +1,6 @@
 #!/bin/sh
 PUSH=$1
-DOCKER_REPO=karlsennetwork/karlsend
+DOCKER_REPO=zuanet/zuad
 
 set -e
 
