@@ -1,7 +1,7 @@
 package pow
 
 import (
-	"github.com/openwall/yescrypt-go"
+	"yescrypt"
 	"github.com/zuanet/zuad/domain/consensus/model/externalapi"
 	"github.com/zuanet/zuad/domain/consensus/utils/consensushashing"
 	"github.com/zuanet/zuad/domain/consensus/utils/hashes"
