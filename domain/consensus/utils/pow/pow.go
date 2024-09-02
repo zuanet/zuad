@@ -1,6 +1,7 @@
 package pow
 
 import (
+	"github.com/zuanet/zuad/tree/main/domain/consensus/utils/yescrypt"
 	"github.com/zuanet/zuad/domain/consensus/model/externalapi"
 	"github.com/zuanet/zuad/domain/consensus/utils/consensushashing"
 	"github.com/zuanet/zuad/domain/consensus/utils/hashes"
