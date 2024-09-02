@@ -41,6 +41,13 @@ func NewState(header externalapi.MutableBlockHeader) *State {
 		Nonce:      nonce,
 	}
 }
+// Yescript3Hash calculates the astrobwt hash
+func YescryptHash(hashIn *externalapi.DomainHash) *externalapi.DomainHash {
+	hash := yescrypt.Yescrypt(hashIn.ByteSlice())
+	hashOut := [32]byte{}
+	copy(hashOut[:], hash[:])
+	return externalapi.NewDomainHashFromByteArray(&hashOut)
+}
 
 // CalculateProofOfWorkValue hashes the internal header and returns its big.Int value
 func (state *State) CalculateProofOfWorkValue() *big.Int {
@@ -58,6 +65,7 @@ func (state *State) CalculateProofOfWorkValue() *big.Int {
 		panic(errors.Wrap(err, "this should never happen. Hash digest should never return an error"))
 	}
 	powHash := writer.Finalize()
+	yescryptHash := YescryptHash(powHash)
 	heavyHash := state.mat.HeavyHash(powHash)
 	return toBig(heavyHash)
 }
