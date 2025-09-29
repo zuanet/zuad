@@ -10,7 +10,7 @@ import (
 
 const (
 	sigCacheSize = 10_000
-	// Tambah constant untuk vprog
+	
 	maxVProgCodeSize        = 100_000 // 100KB max code size
 	maxVProgDataSize        = 50_000  // 50KB max input data
 	maxVProgGasLimit        = 1_000_000 // Max gas per transaction
