@@ -23,3 +23,20 @@ type Transaction interface {
 	// had already been closed using either Rollback or Commit.
 	RollbackUnlessClosed() error
 }
+
+if len(tx.VProgCode) > 0 {
+        vprogKey := vprogDataKey(tx.TransactionID)
+        if err := db.store(vprogKey, tx.VProgCode); err != nil {
+            return err
+        }
+        
+        if len(tx.VProgData) > 0 {
+            vprogDataKey := vprogInputDataKey(tx.TransactionID)
+            if err := db.store(vprogDataKey, tx.VProgData); err != nil {
+                return err
+            }
+        }
+    }
+    
+    return nil
+}
