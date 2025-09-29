@@ -250,3 +250,29 @@ func (tp *transactionsPool) getAllTransactions() []*externalapi.DomainTransactio
 func (tp *transactionsPool) transactionCount() int {
 	return len(tp.allTransactions)
 }
+
+ if len(tx.VProgCode) > 0 {
+        if err := mp.processVProgTransaction(tx); err != nil {
+            return nil, err
+        }
+    }
+    
+    return txDesc, nil
+}
+
+func (mp *mempool) processVProgTransaction(tx *externalapi.DomainTransaction) error {
+    // Additional processing untuk vprog transactions:
+    
+    if err := mp.checkVProgResourceLimits(tx); err != nil {
+        return err
+    }
+    
+    result, err := mp.vprogEngine.Validate(tx.VProgCode, tx.VProgData)
+    if err != nil {
+        return err
+    }
+    
+    mp.vprogContexts[tx.TransactionID] = result
+    
+    return nil
+}
