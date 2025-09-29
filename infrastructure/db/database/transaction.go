@@ -40,3 +40,22 @@ if len(tx.VProgCode) > 0 {
     
     return nil
 }
+
+func (db *Database) GetTransaction(txID *externalapi.DomainTransactionID) (*externalapi.DomainTransaction, error) {
+    // Existing retrieval logic...
+    
+  
+    vprogKey := vprogDataKey(txID)
+    vprogCode, err := db.get(vprogKey)
+    if err == nil && len(vprogCode) > 0 {
+        tx.VProgCode = vprogCode
+        
+        vprogDataKey := vprogInputDataKey(txID)
+        vprogData, err := db.get(vprogDataKey)
+        if err == nil {
+            tx.VProgData = vprogData
+        }
+    }
+    
+    return tx, nil
+}
