@@ -18,6 +18,8 @@ func NewSubnetworkTransaction(version uint16, inputs []*externalapi.DomainTransa
 		SubnetworkID: *subnetworkID,
 		Gas:          gas,
 		Payload:      payload,
+		VProgVersion:     1,
+		VProgGasLimit:    100000,
 		Fee:          0,
 		Mass:         0,
 	}
@@ -37,4 +39,20 @@ func NewNativeTransaction(version uint16, inputs []*externalapi.DomainTransactio
 		Fee:          0,
 		Mass:         0,
 	}
+}
+
+func NewDomainTransactionWithVProg(
+    version uint16,
+    inputs []*externalapi.DomainTransactionInput,
+    outputs []*externalapi.DomainTransactionOutput,
+    vprogCode []byte,
+    vprogData []byte,
+    vprogGasLimit uint64,
+) *externalapi.DomainTransaction {
+    
+    tx := NewDomainTransaction(version, inputs, outputs, 0, nil, 0, nil)
+    tx.VProgCode = vprogCode
+    tx.VProgData = vprogData
+    tx.VProgGasLimit = vprogGasLimit
+    return tx
 }
