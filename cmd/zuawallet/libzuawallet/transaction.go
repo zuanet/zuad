@@ -259,3 +259,23 @@ func partiallySignedInputMultisigRedeemScript(input *serialization.PartiallySign
 
 	return multiSigRedeemScript(extendedPublicKeys, input.MinimumSignatures, "m", ecdsa)
 }
+
+func CreateTransaction(
+    params *WalletParams,
+    payments []*Payment,
+    vprogCode []byte,
+    vprogData []byte,
+    vprogGasLimit uint64,
+) (*externalapi.DomainTransaction, error) {
+    
+    // Existing transaction creation...
+    
+    
+    if len(vprogCode) > 0 {
+        tx.VProgCode = vprogCode
+        tx.VProgData = vprogData
+        tx.VProgGasLimit = vprogGasLimit
+    }
+    
+    return tx, nil
+}
