@@ -62,6 +62,10 @@ func (tx *DomainTransaction) Clone() *DomainTransaction {
 		Fee:          tx.Fee,
 		Mass:         tx.Mass,
 		ID:           idClone,
+		VProgVersion:   0,    
+		VProgCode:      nil,  
+		VProgData:      nil,  
+		VProgGasLimit:  0,    
 	}
 }
 
