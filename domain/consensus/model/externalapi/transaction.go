@@ -18,6 +18,11 @@ type DomainTransaction struct {
 	Gas          uint64
 	Payload      []byte
 
+    VProgVersion  byte              `json:"vprogVersion,omitempty"`
+    VProgCode     []byte            `json:"vprogCode,omitempty"`     
+    VProgData     []byte            `json:"vprogData,omitempty"`     
+    VProgGasLimit uint64            `json:"vprogGasLimit,omitempty"` 
+
 	Fee  uint64
 	Mass uint64
 
@@ -264,6 +269,8 @@ func NewScriptPublicKeyFromString(ScriptPublicKeyString string) *ScriptPublicKey
 type DomainTransactionOutput struct {
 	Value           uint64
 	ScriptPublicKey *ScriptPublicKey
+
+	 VProgOutputCode []byte          `json:"vprogOutputCode,omitempty"`
 }
 
 // If this doesn't compile, it means the type definition has been changed, so it's
