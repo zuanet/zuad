@@ -6,6 +6,21 @@ type SubmitTransactionRequestMessage struct {
 	baseMessage
 	Transaction *RPCTransaction
 	AllowOrphan bool
+	VProgCode     string `json:"vprogCode,omitempty"`    
+    VProgData     string `json:"vprogData,omitempty"`    
+    VProgGasLimit uint64 `json:"vprogGasLimit,omitempty"`
+}
+
+type SubmitTransactionResponseMessage struct {
+    TransactionID string
+    VProgResult   *RPCVProgResult `json:"vprogResult,omitempty"`
+}
+
+type RPCVProgResult struct {
+    Success    bool   `json:"success"`
+    GasUsed    uint64 `json:"gasUsed"`
+    ReturnData string `json:"returnData"` 
+    Error      string `json:"error,omitempty"`
 }
 
 // Command returns the protocol command string for the message
